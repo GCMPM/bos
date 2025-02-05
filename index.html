@@ -54,7 +54,7 @@
             margin-bottom: 10px;
         }
 
-        input, select {
+        input, select, textarea {
             width: 100%;
             padding: 12px;
             border: 2px solid #2980b9;
@@ -63,6 +63,11 @@
             background-color: #ecf0f1;
             color: #34495e;
             font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
         }
 
         input[type="submit"] {
@@ -98,7 +103,6 @@
         <p class="form-description">Preencha as informações abaixo para registrar a ocorrência. Este formulário segue uma temática futurista, com foco em eficiência e precisão.</p>
         
         <form id="registroForm" action="submit_form.php" method="POST">
-            
             <label for="numeroBOS">Número do BOS:</label>
             <input type="text" id="numeroBOS" name="numeroBOS" required placeholder="Informe o número do BOS">
 
@@ -109,7 +113,10 @@
             </select>
 
             <label for="descricao">Descrição Sintética:</label>
-            <input type="text" id="descricao" name="descricao" required placeholder="Informe a descrição sintética">
+            <select id="descricao" name="descricao" required>
+                <option value="y15030">Y 15.030</option>
+                <option value="y15001">Y 15.001</option>
+            </select>
 
             <label for="data">Data da Ocorrência:</label>
             <input type="date" id="data" name="data" required>
@@ -119,6 +126,18 @@
 
             <label for="horaFim">Hora Final da Ocorrência:</label>
             <input type="time" id="horaFim" name="horaFim" required>
+
+            <label for="local">Local da Ocorrência:</label>
+            <textarea id="local" name="local" required placeholder="Informe o local da ocorrência"></textarea>
+
+            <label for="descricaoFatos">Descrição dos Fatos:</label>
+            <textarea id="descricaoFatos" name="descricaoFatos" required placeholder="Descreva os fatos que ocorreram"></textarea>
+
+            <label for="equipe">Equipe Envolvida:</label>
+            <input type="text" id="equipe" name="equipe" placeholder="Informe a equipe envolvida">
+
+            <label for="vtr">VTR Envolvida:</label>
+            <input type="text" id="vtr" name="vtr" placeholder="Informe a VTR envolvida">
 
             <input type="submit" value="Enviar Formulário">
         </form>
@@ -132,4 +151,9 @@
         // JavaScript para validar o formulário antes de enviar
         document.getElementById('registroForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Lógica de validaç
+            // Lógica de validação ou envio aqui
+            alert('Formulário enviado com sucesso!');
+        });
+    </script>
+</body>
+</html>
