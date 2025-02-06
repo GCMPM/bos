@@ -1,216 +1,277 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de BOS</title>
+    <title>Guarda Civil Municipal de Pará de Minas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #1E2C4E; /* Azul marinho */
+            color: #FFFFFF; /* Branco */
         }
-        header {
-            background-color: #0066cc;
-            color: white;
+        h1, h2 {
+            background-color: #0B162B; /* Azul mais escuro */
+            color: #FFFFFF; /* Branco */
+            padding: 10px;
+            border-bottom: 2px solid #FFFFFF; /* Branco */
             text-align: center;
-            padding: 20px;
         }
-        h1 {
-            font-size: 36px;
+        .section {
+            background-color: #233D6C; /* Azul médio */
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
         }
-        form {
-            padding: 20px;
-            margin: 10px auto;
-            max-width: 800px;
-            background-color: white;
-            border-radius: 10px;
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .info {
+            margin-left: 20px;
         }
         label {
-            font-weight: bold;
-            margin-top: 10px;
             display: block;
+            margin-top: 10px;
+            font-weight: bold;
         }
-        input, select, textarea {
+        input[type="text"], input[type="date"], input[type="time"], textarea, select {
             width: 100%;
             padding: 8px;
             margin-top: 5px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            border: 1px solid #CCCCCC; /* Cinza */
+            border-radius: 4px;
+            box-sizing: border-box;
         }
-        .section {
-            margin-top: 20px;
-        }
-        .section h2 {
-            color: #0066cc;
-        }
-        .add-button {
-            background-color: #0066cc;
-            color: white;
-            padding: 10px;
+        .btn-add {
+            background-color: #0B162B; /* Azul mais escuro */
+            color: #FFFFFF; /* Branco */
+            padding: 8px 16px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
+            margin-top: 10px;
+            text-align: center;
         }
-        .add-button:hover {
-            background-color: #004d99;
+        .btn-add:hover {
+            background-color: #233D6C; /* Azul médio */
+        }
+        input[type="submit"] {
+            background-color: #0B162B; /* Azul mais escuro */
+            color: #FFFFFF; /* Branco */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: #233D6C; /* Azul médio */
+        }
+
+        /* Estilo para os checkboxes em linha */
+        .horizontal-checkboxes {
+            display: flex;
+            justify-content: flex-start; /* Alinha à esquerda */
+            gap: 10px; /* Espaço entre os checkboxes */
+            margin-top: 5px; /* Ajuste de espaçamento superior */
+        }
+
+        .horizontal-checkboxes label {
+            display: inline-block;
+            margin-right: 10px; /* Espaço entre as opções */
+            font-size: 14px;
+        }
+
+        .section {
+            background-color: #233D6C; /* Azul médio */
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 2px solid #CCCCCC; /* Borda para as seções */
+            width: 100%;
+        }
+
+        .info {
+            margin-left: 0; /* Remove a margem extra para alinhamento à esquerda */
+        }
+
+        label {
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        input[type="text"], input[type="date"], input[type="time"], select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #CCCCCC;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
+    <h1>PREFEITURA MUNICIPAL DE PARÁ DE MINAS</h1>
+    <h2>REPORTE (Registro Eletrônico de Policiamento Ordinário e Relatório Técnico Estatístico)</h2>
+    <form action="#" method="post" id="boletimForm">
+        <!-- Dados do Boletim de Ocorrência -->
+        <div class="section">
+            <div class="info">
+                <label>Boletim de Ocorrência Simplificado nº:</label>
+                <input type="text" name="boletim_numero">
+                <label for="destinatario">Destinatário</label>
+                <select id="destinatario" name="destinatario" required>
+                    <option value="subcomandante">Ao Subcomandante da Guarda Civil Municipal</option>
+                    <option value="comandante">Ao Comandante da Guarda Civil Municipal</option>
+                </select>
+                <label>Descrição Sintética:</label>
+                <select name="descricao_sintetica">
+                    <option value="Y15.030">Patrulhamento Preventivo (Y15.030): Ação/Operação em área urbana.</option>
+                    <option value="T00.000">Fiscalização de Trânsito GCM (T00.000): Infrações referentes ao trânsito.</option>
+                    <option value="Y15.001">Patrulhamento Escolar (Y15.001): Patrulha Escolar.</option>
+                </select>
+            </div>
+        </div>
 
-<header>
-    <h1>Registro de BOS</h1>
-</header>
+        <!-- Dados do Local da Ocorrência -->
+        <h2>I – DADOS REFERENTES AO LOCAL DE OCORRÊNCIA</h2>
+        <div class="section">
+            <div class="info">
+                <label>Data:</label>
+                <input type="date" name="data">
+                <label>Hora Inicial:</label>
+                <input type="time" name="hora_inicial">
+                <label>Hora Final:</label>
+                <input type="time" name="hora_final">
+                <label>Logradouro:</label>
+                <input type="text" name="logradouro">
+                <label>Nº:</label>
+                <input type="text" name="numero">
+                <label>Complemento:</label>
+                <select name="complemento">
+                    <option value="Casa">Casa</option>
+                    <option value="Lote">Lote</option>
+                    <option value="Apartamento">Apartamento</option>
+                    <option value="Empresa">Empresa</option>
+                </select>
+                <label>Bairros:</label>
+                <input type="text" name="bairros">
+                <label>Município:</label>
+                <input type="text" name="municipio">
+                <label>UF:</label>
+                <input type="text" name="uf">
+            </div>
+        </div>
 
-<form>
-    <!-- Boletim de Ocorrência -->
-    <div class="section">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+        <!-- Dados dos Envolvidos -->
+        <h2>II – DADOS REFERENTES AOS ENVOVIDOS E CONDUZIDOS</h2>
+        <div class="section">
+            <div class="info">
+                <label>Nome:</label>
+                <input type="text" name="nome">
+                <label>Condição de Qualificação:</label>
+                <select name="condicao_qualificacao">
+                    <option value="Suspeito">Suspeito</option>
+                    <option value="Vítima">Vítima</option>
+                    <option value="Testemunha">Testemunha</option>
+                    <option value="Outros">Outros</option>
+                </select>
+                <label>Condição Física:</label>
+                <select name="condicao_fisica">
+                    <option value="Com Ferimento">Com Ferimento</option>
+                    <option value="Sem Ferimento">Sem Ferimento</option>
+                </select>
+                <label>Sexo:</label>
+                <select name="sexo">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Outro">Outro</option>
+                </select>
+                <label>Filiação:</label>
+                <input type="text" name="pai" placeholder="Nome do Pai">
+                <input type="text" name="mae" placeholder="Nome da Mãe">
+                <label>Endereço:</label>
+                <input type="text" name="endereco">
+                <label>Nº:</label>
+                <input type="text" name="numero_envolvido">
+                <label>Complemento:</label>
+                <input type="text" name="complemento_envolvido">
+                <label>Bairro:</label>
+                <input type="text" name="bairro_envolvido">
+            </div>
+        </div>
 
-        <label for="numero-bos">Número BOS</label>
-        <input type="text" id="numero-bos" name="numero-bos" value="01/2025" disabled>
+        <!-- Dados para Controle Interno -->
+        <h2>IV – DADOS PARA CONTROLE INTERNO</h2>
+        <div class="section">
+            <div class="info">
+                <label>Relator do Registro:</label>
+                <input type="text" name="relator_registro">
+                <label>MASP do Relator:</label>
+                <input type="text" name="masp_relator">
+                <label>Grupamento Responsável:</label>
+                <input type="text" name="grupamento_responsavel">
+                <label>GCM’s Envolvidos no Registro:</label>
+                <input type="text" name="gcms_envolvidos">
+                <label>MASP dos GCM’s participantes:</label>
+                <input type="text" name="masp_gcms">
+            </div>
+        </div>
 
-        <label for="destinatario">Destinatário</label>
-        <select id="destinatario" name="destinatario" required>
-            <option value="subcomandante">Ao Subcomandante da Guarda Civil Municipal</option>
-            <option value="comandante">Ao Comandante da Guarda Civil Municipal</option>
+        <!-- Checkboxes para veículos -->
+        <div class="section">
+            <div class="info">
+                <label>Veículos Envolvidos:</label>
+                <div class="horizontal-checkboxes">
+                    <label><input type="checkbox" name="veiculos_envolvidos" value="01"> 01</label>
+                    <label><input type="checkbox" name="veiculos_envolvidos" value="02"> 02</label>
+                    <label><input type="checkbox" name="veiculos_envolvidos" value="03"> 03</label>
+                    <label><input type="checkbox" name="veiculos_envolvidos" value="04"> 04</label>
+                    <label><input type="checkbox" name="veiculos_envolvidos" value="05"> 05</label>
+                    <label><input type="checkbox" name="veiculos_envolvidos" value="ADM"> ADM</label>
+                    <label><input type="checkbox" name="veiculos_envolvidos" value="MP 01"> MP 01</label>
+                    <label><input type="checkbox" name="veiculos_envolvidos" value="MP 02"> MP 02</label>
+                    <label><input type="checkbox" name="veiculos_envolvidos" value="MP 03"> MP 03</label>
+                    <label><input type="checkbox" name="veiculos_envolvidos" value="MP 04"> MP 04</label>
+                    <label><input type="checkbox" name="veiculos_envolvidos" value="MP 05"> MP 05</label>
+                    <label><input type="checkbox" name="veiculos_envolvidos" value="MP 06"> MP 06</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="info">
+                <label>Placa dos Veículos Envolvidos:</label>
+                <div class="horizontal-checkboxes">
+                    <label><input type="checkbox" name="placa_vtr" value="01(SIK-9078)"> 01(SIK-9078)</label>
+                    <label><input type="checkbox" name="placa_vtr" value="02(SIK-5623)"> 02(SIK-5623)</label>
+                    <label><input type="checkbox" name="placa_vtr" value="03"> 03</label>
+                    <label><input type="checkbox" name="placa_vtr" value="04"> 04</label>
+                    <label><input type="checkbox" name="placa_vtr" value="05"> 05</label>
+                    <label><input type="checkbox" name="placa_vtr" value="ADM"> ADM</label>
+                    <label><input type="checkbox" name="placa_vtr" value="MP 01"> MP 01</label>
+                    <label><input type="checkbox" name="placa_vtr" value="MP 02"> MP 02</label>
+                    <label><input type="checkbox" name="placa_vtr" value="MP 03"> MP 03</label>
+                    <label><input type="checkbox" name="placa_vtr" value="MP 04"> MP 04</label>
+                    <label><input type="checkbox" name="placa_vtr" value="MP 05"> MP 05</label>
+                    <label><input type="checkbox" name="placa_vtr" value="MP 06"> MP 06</label>
+                </div>
+            </div>
+        </div>
+
+        <label for="justificativa_registro">Justificativa do Registro:</label>
+        <select id="justificativa_registro" name="justificativa_registro">
+            <option value="Acionamento">Acionamento</option>
+            <option value="Justificativa">Justificativa</option>
+            <option value="Ordem de Serviço">Ordem de Serviço</option>
         </select>
 
-        <label for="descricao">Descrição Sintética</label>
-        <select id="descricao" name="descricao" required>
-            <option value="y15001">Y 15.001</option>
-            <option value="y15030">Y 15.030</option>
-        </select>
-
-        <label for="data-ocorrencia">Data da Ocorrência</label>
-        <input type="date" id="data-ocorrencia" name="data-ocorrencia" required>
-
-        <label for="hora-inicial">Hora Inicial da Ocorrência</label>
-        <input type="time" id="hora-inicial" name="hora-inicial" required>
-
-        <label for="hora-final">Hora Final da Ocorrência</label>
-        <input type="time" id="hora-final" name="hora-final">
-
-        <label for="logradouro">Logradouro</label>
-        <textarea id="logradouro" name="logradouro" rows="4" required></textarea>
-    </div>
-
-    <!-- Dados do Local da Ocorrência -->
-    <div class="section">
-        <h2>Dados do Local da Ocorrência</h2>
-        
-        <label for="numero-local">Número do Local da Ocorrência</label>
-        <input type="text" id="numero-local" name="numero-local" required>
-
-        <label for="complemento">Complemento</label>
-        <select id="complemento" name="complemento" required>
-            <option value="apartamento">Apartamento</option>
-            <option value="casa">Casa</option>
-            <option value="empresa">Empresa</option>
-            <option value="galpao">Galpão</option>
-            <option value="loja">Loja</option>
-            <option value="lote">Lote</option>
-        </select>
-
-        <label for="bairro">Bairro</label>
-        <input type="text" id="bairro" name="bairro" required>
-
-        <label for="municipio">Município</label>
-        <input type="text" id="municipio" name="municipio" required>
-
-        <label for="uf-municipio">UF do Município</label>
-        <input type="text" id="uf-municipio" name="uf-municipio" required>
-    </div>
-
-    <!-- Qualificação dos Envolvidos -->
-    <div class="section">
-        <h2>Qualificação dos Envolvidos</h2>
-        <label for="qualificado1">Qualificado 1</label>
-        <input type="text" id="qualificado1" name="qualificado1">
-
-        <button type="button" class="add-button" onclick="addQualificado()">Adicionar Qualificado</button>
-    </div>
-
-    <!-- Descrição dos Fatos -->
-    <div class="section">
-        <h2>Descrição dos Fatos</h2>
-        <textarea id="descricao-fatos" name="descricao-fatos" rows="5" required></textarea>
-    </div>
-
-    <!-- Controle Interno -->
-    <div class="section">
-        <h2>Controle Interno</h2>
-        
-        <label for="relator">Relator do Registro</label>
-        <input type="text" id="relator" name="relator" value="GCM Dantas" disabled>
-
-        <label for="masp-relator">MASP do Relator</label>
-        <input type="text" id="masp-relator" name="masp-relator" required>
-
-        <label for="grupo-responsavel">Grupo Responsável</label>
-        <select id="grupo-responsavel" name="grupo-responsavel" required>
-            <option value="cecom">CECOM</option>
-            <option value="gcpm">GCPOM ALFA</option>
-            <option value="gpo-alfa">GPO ALFA</option>
-            <option value="gpo-bravo">GPO BRAVO</option>
-            <option value="gpo-charlie">GPO CHARLIE</option>
-        </select>
-
-        <label for="gcm-envolvidos">GCM's Envolvidos no Registro</label>
-        <input type="text" id="gcm-envolvidos" name="gcm-envolvidos" required>
-
-        <label for="vtr-envolvida">VTR Envolvida</label>
-        <select id="vtr-envolvida" name="vtr-envolvida" required>
-            <option value="01">01(SIK-9078)</option>
-            <option value="02">02(SIK-5623)</option>
-            <option value="03">03</option>
-            <option value="04">04</option>
-            <option value="05">05</option>
-            <option value="adm">ADM</option>
-            <option value="mp01">MP 01</option>
-            <option value="mp02">MP 02</option>
-            <option value="mp03">MP 03</option>
-        </select>
-
-        <label for="placa-vtr">Placa da VTR ou VTR's Envolvidas</label>
-        <select id="placa-vtr" name="placa-vtr" required>
-            <option value="01">01(SIK-9078)</option>
-            <option value="02">02(SIK-5623)</option>
-            <option value="03">03</option>
-            <option value="04">04</option>
-            <option value="05">05</option>
-            <option value="adm">ADM</option>
-            <option value="mp01">MP 01</option>
-            <option value="mp02">MP 02</option>
-            <option value="mp03">MP 03</option>
-        </select>
-
-        <label for="justificativa">Justificativa do Registro</label>
-        <select id="justificativa" name="justificativa" required>
-            <option value="iniciativa">Iniciativa</option>
-            <option value="acionamento">Acionamento</option>
-        </select>
-    </div>
-
-    <button type="submit" class="add-button">Enviar Registro</button>
-</form>
-
-<script>
-    let qualificadosCount = 1;
-    
-    function addQualificado() {
-        qualificadosCount++;
-        const qualificadoField = document.createElement('div');
-        qualificadoField.classList.add('qualificado');
-        qualificadoField.innerHTML = `<label for="qualificado${qualificadosCount}">Qualificado ${qualificadosCount}</label>
-                                      <input type="text" id="qualificado${qualificadosCount}" name="qualificado${qualificadosCount}">`;
-        document.querySelector('.section').appendChild(qualificadoField);
-    }
-</script>
-
+        <input type="submit" value="Gerar DOCX">
+    </form>
 </body>
 </html>
