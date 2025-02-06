@@ -116,7 +116,7 @@
     </style>
 </head>
 <body>
-    <h1>GUARDA CIVIL MUNICIPAL DE PARÁ DE MINAS</h1>
+    <h1>PREFEITURA MUNICIPAL DE PARÁ DE MINAS</h1>
     <h2>REPORTE (Registro Eletrônico de Policiamento Ordinário e Relatório Técnico Estatístico)</h2>
     <form action="#" method="post" id="boletimForm">
         <!-- Dados do Boletim de Ocorrência -->
@@ -273,36 +273,5 @@
 
         <input type="submit" value="Gerar DOCX">
     </form>
-
-    <script>
-        document.getElementById('boletimForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const formData = new FormData(this);
-
-            // Converter FormData para objeto simples
-            const data = {};
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
-            }
-
-            const scriptUrl = 'https://script.google.com/macros/s/AKfycbz_V-QkV14WRzVcm-hDfSBtpKnB7u4pLS4pBCYgsLrE_QXmjc8mCu-JP8yij1HGS81SNQ/exec'; // Coloque sua URL aqui
-
-            // Enviar os dados para o Google Apps Script
-            fetch(scriptUrl, {
-                method: 'POST',
-                body: JSON.stringify(data)
-            })
-            .then(response => response.text())
-            .then(responseText => {
-                alert("Formulário enviado com sucesso!");
-                // Aqui você pode adicionar a lógica para gerar o DOCX, se necessário
-            })
-            .catch(error => {
-                console.error('Erro ao enviar o formulário:', error);
-                alert("Erro ao enviar o formulário!");
-            });
-        });
-    </script>
 </body>
 </html>
