@@ -310,48 +310,43 @@
         });
     </script>
 
-    <!-- Script para capturar o envio do formulário e enviar os dados para o Google Apps Script -->
-    <script>
-        document.getElementById("boletimForm").addEventListener("submit", function(e) {
-            e.preventDefault(); // Evita o envio tradicional do formulário
+   <script>
+  document.getElementById("boletimForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // Evita o envio tradicional do formulário
 
-            var form = document.getElementById("boletimForm");
-            var formData = new FormData(form);
-            var data = {};
+    var form = document.getElementById("boletimForm");
+    var formData = new FormData(form);
+    var data = {};
 
-            // Converte os dados do FormData em um objeto JavaScript.
-            // Se houver mais de um valor para o mesmo nome (por exemplo, checkboxes), cria um array.
-            formData.forEach(function(value, key) {
-                if (data.hasOwnProperty(key)) {
-                    if (!Array.isArray(data[key])) {
-                        data[key] = [data[key]];
-                    }
-                    data[key].push(value);
-                } else {
-                    data[key] = value;
-                }
-            });
+    // Converte os dados do formulário em um objeto
+    formData.forEach(function(value, key) {
+      if (data.hasOwnProperty(key)) {
+        if (!Array.isArray(data[key])) {
+          data[key] = [data[key]];
+        }
+        data[key].push(value);
+      } else {
+        data[key] = value;
+      }
+    });
 
-            // URL do Web App do Apps Script
-            var scriptURL = "https://script.google.com/macros/s/AKfycbz_V-QkV14WRzVcm-hDfSBtpKnB7u4pLS4pBCYgsLrE_QXmjc8mCu-JP8yij1HGS81SNQ/exec";
+    // URL do seu Web App
+    var scriptURL = "https://script.google.com/macros/s/AKfycbz_V-QkV14WRzVcm-hDfSBtpKnB7u4pLS4pBCYgsLrE_QXmjc8mCu-JP8yij1HGS81SNQ/exec";
 
-            fetch(scriptURL, {
-                method: "POST",
-                mode: "no-cors", // Usado para evitar problemas com CORS. (Observe que, em no-cors, não é possível ler a resposta.)
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            })
-            .then(function() {
-                alert("Registro enviado com sucesso!");
-                form.reset();
-            })
-            .catch(function(error) {
-                console.error("Erro:", error);
-                alert("Houve um erro ao enviar o registro.");
-            });
-        });
-    </script>
-</body>
-</html>
+    fetch(scriptURL, {
+      method: "POST",
+      mode: "no-cors", // Se precisar ler a resposta, remova este modo e configure CORS
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    })
+    .then(function() {
+      alert("Registro enviado com sucesso!");
+      form.reset();
+    })
+    .catch(function(error) {
+      console.error("Erro:", error);
+      alert("Houve um erro ao enviar o registro.");
+    });
+  });
+</script>
+
