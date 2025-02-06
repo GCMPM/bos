@@ -24,18 +24,21 @@
             padding: 15px;
             margin-bottom: 20px;
             border-radius: 5px;
+            border: 2px solid #CCCCCC; /* Borda para as seções */
+            width: 100%;
         }
         .section-title {
             font-weight: bold;
             margin-bottom: 10px;
         }
         .info {
-            margin-left: 20px;
+            margin-left: 0;
         }
         label {
-            display: block;
+            display: inline-block;
             margin-top: 10px;
             font-weight: bold;
+            width: 100%;
         }
         input[type="text"], input[type="date"], input[type="time"], textarea, select {
             width: 100%;
@@ -70,54 +73,23 @@
         input[type="submit"]:hover {
             background-color: #233D6C; /* Azul médio */
         }
-
         /* Estilo para os checkboxes em linha */
         .horizontal-checkboxes {
             display: flex;
-            justify-content: flex-start; /* Alinha à esquerda */
-            gap: 10px; /* Espaço entre os checkboxes */
-            margin-top: 5px; /* Ajuste de espaçamento superior */
+            justify-content: flex-start;
+            gap: 10px;
+            margin-top: 5px;
         }
-
         .horizontal-checkboxes label {
             display: inline-block;
-            margin-right: 10px; /* Espaço entre as opções */
+            margin-right: 10px;
             font-size: 14px;
-        }
-
-        .section {
-            background-color: #233D6C; /* Azul médio */
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 2px solid #CCCCCC; /* Borda para as seções */
-            width: 100%;
-        }
-
-        .info {
-            margin-left: 0; /* Remove a margem extra para alinhamento à esquerda */
-        }
-
-        label {
-            display: inline-block;
-            margin-top: 10px;
-            font-weight: bold;
-            width: 100%;
-        }
-
-        input[type="text"], input[type="date"], input[type="time"], select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #CCCCCC;
-            border-radius: 4px;
-            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
     <h1>PREFEITURA MUNICIPAL DE PARÁ DE MINAS</h1>
-    <h2> (Guarda Civil Municipal)</h2>
+    <h2>(Guarda Civil Municipal)</h2>
     <form action="#" method="post" id="boletimForm">
         <!-- Dados do Boletim de Ocorrência -->
         <div class="section">
@@ -169,40 +141,97 @@
         </div>
 
         <!-- Dados dos Envolvidos -->
-        <h2>II – DADOS REFERENTES AOS ENVOVIDOS E CONDUZIDOS</h2>
+        <h2>II – DADOS REFERENTES AOS ENVOLVIDOS E CONDUZIDOS</h2>
         <div class="section">
             <div class="info">
+                <h3>Qualificado 01</h3>
                 <label>Nome:</label>
-                <input type="text" name="nome">
+                <input type="text" name="nome_01">
                 <label>Condição de Qualificação:</label>
-                <select name="condicao_qualificacao">
+                <select name="condicao_qualificacao_01">
                     <option value="Suspeito">Suspeito</option>
                     <option value="Vítima">Vítima</option>
                     <option value="Testemunha">Testemunha</option>
                     <option value="Outros">Outros</option>
                 </select>
                 <label>Condição Física:</label>
-                <select name="condicao_fisica">
+                <select name="condicao_fisica_01">
                     <option value="Com Ferimento">Com Ferimento</option>
                     <option value="Sem Ferimento">Sem Ferimento</option>
                 </select>
                 <label>Sexo:</label>
-                <select name="sexo">
+                <select name="sexo_01">
                     <option value="Masculino">Masculino</option>
                     <option value="Feminino">Feminino</option>
                     <option value="Outro">Outro</option>
                 </select>
                 <label>Filiação:</label>
-                <input type="text" name="pai" placeholder="Nome do Pai">
-                <input type="text" name="mae" placeholder="Nome da Mãe">
+                <input type="text" name="pai_01" placeholder="Nome do Pai">
+                <input type="text" name="mae_01" placeholder="Nome da Mãe">
                 <label>Endereço:</label>
-                <input type="text" name="endereco">
+                <input type="text" name="endereco_01">
                 <label>Nº:</label>
-                <input type="text" name="numero_envolvido">
+                <input type="text" name="numero_01">
                 <label>Complemento:</label>
-                <input type="text" name="complemento_envolvido">
+                <input type="text" name="complemento_01">
                 <label>Bairro:</label>
-                <input type="text" name="bairro_envolvido">
+                <input type="text" name="bairro_01">
+                <label>Município:</label>
+                <input type="text" name="municipio_01">
+                <label>UF:</label>
+                <input type="text" name="uf_01">
+            </div>
+        </div>
+
+        <!-- Botão para adicionar mais qualificados -->
+        <button type="button" id="addQualificado">Adicionar Qualificado</button>
+
+        <!-- Qualificado 02 - Será mostrado ao clicar no botão "Adicionar Qualificado" -->
+        <div id="qualificado_02" style="display:none;">
+            <h3>Qualificado 02</h3>
+            <label>Nome:</label>
+            <input type="text" name="nome_02">
+            <label>Condição de Qualificação:</label>
+            <select name="condicao_qualificacao_02">
+                <option value="Suspeito">Suspeito</option>
+                <option value="Vítima">Vítima</option>
+                <option value="Testemunha">Testemunha</option>
+                <option value="Outros">Outros</option>
+            </select>
+            <label>Condição Física:</label>
+            <select name="condicao_fisica_02">
+                <option value="Com Ferimento">Com Ferimento</option>
+                <option value="Sem Ferimento">Sem Ferimento</option>
+            </select>
+            <label>Sexo:</label>
+            <select name="sexo_02">
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Outro">Outro</option>
+            </select>
+            <label>Filiação:</label>
+            <input type="text" name="pai_02" placeholder="Nome do Pai">
+            <input type="text" name="mae_02" placeholder="Nome da Mãe">
+            <label>Endereço:</label>
+            <input type="text" name="endereco_02">
+            <label>Nº:</label>
+            <input type="text" name="numero_02">
+            <label>Complemento:</label>
+            <input type="text" name="complemento_02">
+            <label>Bairro:</label>
+            <input type="text" name="bairro_02">
+            <label>Município:</label>
+            <input type="text" name="municipio_02">
+            <label>UF:</label>
+            <input type="text" name="uf_02">
+        </div>
+
+        <!-- Relatório da Ocorrência -->
+        <h2>III – RELATÓRIO DA OCORRÊNCIA</h2>
+        <div class="section">
+            <div class="info">
+                <label>Descrição dos Fatos:</label>
+                <textarea name="descricao_fatos" rows="5"></textarea>
             </div>
         </div>
 
@@ -271,7 +300,58 @@
             <option value="Ordem de Serviço">Ordem de Serviço</option>
         </select>
 
-        <input type="submit" value="Gerar DOCX">
+        <input type="submit" value="Gerar Registro">
     </form>
+
+    <!-- Script para mostrar o segundo qualificado -->
+    <script>
+        document.getElementById("addQualificado").addEventListener("click", function() {
+            document.getElementById("qualificado_02").style.display = "block";
+        });
+    </script>
+
+    <!-- Script para capturar o envio do formulário e enviar os dados para o Google Apps Script -->
+    <script>
+        document.getElementById("boletimForm").addEventListener("submit", function(e) {
+            e.preventDefault(); // Evita o envio tradicional do formulário
+
+            var form = document.getElementById("boletimForm");
+            var formData = new FormData(form);
+            var data = {};
+
+            // Converte os dados do FormData em um objeto JavaScript.
+            // Se houver mais de um valor para o mesmo nome (por exemplo, checkboxes), cria um array.
+            formData.forEach(function(value, key) {
+                if (data.hasOwnProperty(key)) {
+                    if (!Array.isArray(data[key])) {
+                        data[key] = [data[key]];
+                    }
+                    data[key].push(value);
+                } else {
+                    data[key] = value;
+                }
+            });
+
+            // URL do Web App do Apps Script
+            var scriptURL = "https://script.google.com/macros/s/AKfycbz_V-QkV14WRzVcm-hDfSBtpKnB7u4pLS4pBCYgsLrE_QXmjc8mCu-JP8yij1HGS81SNQ/exec";
+
+            fetch(scriptURL, {
+                method: "POST",
+                mode: "no-cors", // Usado para evitar problemas com CORS. (Observe que, em no-cors, não é possível ler a resposta.)
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(function() {
+                alert("Registro enviado com sucesso!");
+                form.reset();
+            })
+            .catch(function(error) {
+                console.error("Erro:", error);
+                alert("Houve um erro ao enviar o registro.");
+            });
+        });
+    </script>
 </body>
 </html>
